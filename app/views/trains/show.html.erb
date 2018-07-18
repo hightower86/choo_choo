@@ -5,5 +5,20 @@
   <%= @train.number %>
 </p>
 
+<% if @train.route != nil %>
+  <p> Поезду назначен маршрут: </p>
+  <ul>
+    <li>
+      <%= @train.route.title %>
+    </li>
+  </ul>
+  
+<% else %>
+  <p> 
+    <font color="red"> Маршрут не назначен! </font>
+  </p>
+<% end %>
+
+
 <%= link_to 'Edit', edit_train_path(@train) %> |
 <%= link_to 'Back', trains_path %>
