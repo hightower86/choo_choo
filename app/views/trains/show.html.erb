@@ -5,20 +5,23 @@
   <%= @train.number %>
 </p>
 
-<% if @train.route != nil %>
-  <p> Поезду назначен маршрут: </p>
-  <ul>
-    <li>
-      <%= @train.route.title %>
-    </li>
-  </ul>
-  
-<% else %>
-  <p> 
-    <font color="red"> Маршрут не назначен! </font>
-  </p>
-<% end %>
+<p>
+  <strong>На станции:</strong>
+  <% if @train.current_station.present? %>
+    <%= @train.current_station.title %>
+  <% else %>
+    <font color="red"> Не указано </font>
+  <% end %>
+</p>
 
+<p>
+  <% if @train.route.present? %>
+    <strong>Поезду назначен маршрут:</strong> 
+    <%= @train.route.title %>
+  <% else %>
+    <font color="red"> Маршрут не назначен! </font>
+  <% end %>
+</p>
 
 <%= link_to 'Редактировать', edit_train_path(@train) %> |
 <%= link_to 'Назад', trains_path %>
