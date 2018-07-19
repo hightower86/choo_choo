@@ -20,5 +20,20 @@
   <% end %>
 <% end %>
 
+<% if @route.railway_stations.empty? %>
+<p> 
+  <font color="red"> Станций в маршруте пока нет! </font>
+</p>
+<% else %>
+  <p> Список станций маршрута: </p>
+  <%@route.railway_stations.each do |r|  %>
+    <ul>
+      <li>
+        <%= r.title %>
+      </li>
+    </ul>
+  <% end %>
+<% end %>
+
 <%= link_to 'Редактировать', edit_route_path(@route) %> |
 <%= link_to 'Назад', routes_path %>
