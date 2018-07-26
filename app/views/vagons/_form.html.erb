@@ -1,0 +1,35 @@
+<%= form_with(model: vagon, local: true) do |form| %>
+  
+  <%= render 'common/errors', resource: vagon %>
+
+  <div class="field">
+    <%= form.label :number %>
+    <%= form.text_field :number, id: :vagon_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :train , 'Поезд:'%>
+    <%= form.collection_select :train_id, Train.all, :id, :number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :v_type , 'Тип Вагона:'%>
+    <%= form.number_field :v_type, in: 1..2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :num_low_places , 'Кол-во нижних мест:'%>
+    <%= form.number_field :num_low_places %>
+  </div>
+   
+  <div class="field">
+    <%= form.label :num_hi_places , 'Кол-во верхних мест:'%>
+    <%= form.number_field :num_hi_places %>
+  </div>
+
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

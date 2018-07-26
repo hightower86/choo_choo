@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Номер:</strong>
+  <%= @vagon.number %>
+</p>
+
+<p>
+  <% if @vagon.v_type.present? %>
+    <strong>Тип вагона:</strong> 
+    <%= @vagon.v_type %>
+  <% else %>
+    <font color="red"> Тип вагона не выбран! </font>
+  <% end %>
+</p>
+
+<p>
+  <% if @vagon.train.present? %>
+    <strong>Вагон принадлежит Поезду:</strong> 
+    <%= @vagon.train.number %>
+  <% else %>
+    <font color="red"> Поезд не назначен! </font>
+  <% end %>
+</p>
+
+<%= link_to 'Редактировать', edit_vagon_path(@vagon) %> |
+<%= link_to 'Назад', vagons_path %>
