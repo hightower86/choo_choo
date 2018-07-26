@@ -14,7 +14,7 @@
 
   <div class="field">
     <%= form.label :v_type , 'Тип Вагона:'%>
-    <%= form.number_field :v_type, in: 1..2 %>
+    <%= form.select :v_type, Vagon::V_TYPES, {} %>
   </div>
 
   <div class="field">

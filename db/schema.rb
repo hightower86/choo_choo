@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20180725045539) do
   create_table "vagons", force: :cascade do |t|
     t.integer "train_id"
     t.integer "number"
-    t.integer "v_type"
+    t.string "v_type"
     t.integer "num_hi_places"
     t.integer "num_low_places"
     t.datetime "created_at", null: false
