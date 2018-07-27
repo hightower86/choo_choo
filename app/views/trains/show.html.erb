@@ -1,3 +1,4 @@
+<h1>ПОЕЗД</h1>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -22,6 +23,22 @@
     <font color="red"> Маршрут не назначен! </font>
   <% end %>
 </p>
+
+<% if @train.vagons.empty? %>
+<p> 
+  <font color="red"> Нет ни одного вагона! </font>
+</p>
+<% else %>
+  <h2> Информация о вагонах: </h2>
+  <p> Плацкартных вагонов: 
+  <%=@train.count_vagons('плацкартный')%></p>
+  Кол-во мест: верх/нижн.
+  <%=@train.count_hi_places('плацкартный')%> / <%=@train.count_low_places('плацкартный')%>
+  <p> Купейных вагонов: 
+  <%=@train.count_vagons('купейный')%> </p>
+  <p>Кол-во мест: верх/нижн.
+  <%=@train.count_hi_places('купейный')%> / <%=@train.count_low_places('купейный')%></p>
+<% end %>
 
 <%= link_to 'Редактировать', edit_train_path(@train) %> |
 <%= link_to 'Назад', trains_path %>
