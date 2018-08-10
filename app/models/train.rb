@@ -17,4 +17,8 @@ class Train < ApplicationRecord
     vagons.where(v_type: v_type).sum(:num_hi_places)
   end
 
+  def add_vagon(vagon)
+    vagons << vagon unless vagons.include(vagon)
+  end
+
 end

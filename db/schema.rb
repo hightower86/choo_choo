@@ -65,6 +65,8 @@ ActiveRecord::Schema.define(version: 20180809071752) do
     t.datetime "updated_at", null: false
     t.integer "side_low_places"
     t.integer "side_hi_places"
+    t.string "type"
+    t.integer "seat_places"
   end
 
 end

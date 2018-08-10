@@ -29,6 +29,14 @@
   <font color="red"> Нет ни одного вагона! </font>
 </p>
 <% else %>
+  <p> Список вагонов поезда: </p>
+  <%@train.vagons.each do |v|  %>
+    <ul>
+      <li>
+        <%= link_to v.number, vagon_path(v)%>
+      </li>
+    </ul>
+  <% end %>
   <h2> Информация о вагонах: </h2>
   <p> Плацкартных вагонов: 
   <%=@train.count_vagons('плацкартный')%></p>
