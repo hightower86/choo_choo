@@ -7,9 +7,9 @@
 </p>
 
 <p>
-  <% if @vagon.v_type.present? %>
+  <% if @vagon.type.present? %>
     <strong>Тип вагона:</strong> 
-    <%= @vagon.v_type %>
+    <%= @vagon.type %>
   <% else %>
     <font color="red"> Тип вагона не выбран! </font>
   <% end %>

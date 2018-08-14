@@ -13,8 +13,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :v_type , 'Тип Вагона:'%>
-    <%= form.select :v_type, Vagon::V_TYPES, {} %>
+    <%= form.label :type , 'Тип Вагона:'%>
+    <%= form.select :type, @vagon.type%>
   </div>
 
   <div class="field">
