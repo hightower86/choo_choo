@@ -25,7 +25,7 @@ class VagonsController < ApplicationController
 
     respond_to do |format|
       if @vagon.save
-        format.html { redirect_to @vagon, notice: 'Vagon was successfully created.' }
+        format.html { redirect_to @vagon.becomes(Vagon), notice: 'Vagon was successfully created.' }
       else
         format.html { render :new }
       end
@@ -36,7 +36,7 @@ class VagonsController < ApplicationController
   def update
     respond_to do |format|
       if @vagon.update(vagon_params)
-        format.html { redirect_to @vagon, notice: 'Vagon was successfully updated.' }
+        format.html { redirect_to @vagon.becomes(Vagon), notice: 'Vagon was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -58,7 +58,8 @@ class VagonsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def vagon_params
-      params.require(:vagon).permit(:number, :num_low_places, :num_hi_places, :side_hi_places, :side_low_places)
+    # тут перечислить все поля подклассов. важно! поле тайп
+    def vagon_params 
+      params.require(:vagon).permit(:number, :num_low_places, :num_hi_places, :side_hi_places, :side_low_places, :train_id, :type, :seat_places)
     end
 end

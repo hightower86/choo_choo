@@ -1,4 +1,4 @@
-<%= form_with(model: vagon, local: true) do |form| %>
+<%= form_with(model: vagon.becomes(Vagon), local: true) do |form| %>
   
   <%= render 'common/errors', resource: vagon %>
 
@@ -14,7 +14,7 @@
 
   <div class="field">
     <%= form.label :type , 'Тип Вагона:'%>
-    <%= form.select :type, @vagon.type%>
+    <%= form.collection_select :type, Vagon::V_TYPES, :first.to_s ,:last %>
   </div>
 
   <div class="field">
