@@ -17,6 +17,12 @@
     <%= form.collection_select :route_id, Route.all, :id, :title %>
   </div>
 
+  <div class="field">
+    <%= form.label :sort_flag , 'Сортировка с хвоста состава:'%>
+    <%= form.check_box(:sort_flag) %>
+  </div>
+
+
   <div class="actions">
     <%= form.submit %>
   </div>

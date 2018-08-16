@@ -25,39 +25,49 @@
 </p>
 
 <% if @train.vagons.empty? %>
-<p> 
-  <font color="red"> Нет ни одного вагона! </font>
-</p>
+  <p> 
+    <font color="red"> Нет ни одного вагона! </font>
+  </p>
 <% else %>
+
   <p> Список вагонов поезда: </p>
-  <%@train.vagons.each do |v|  %>
-    <ul>
-      <li>
-        <%= link_to v.number, vagon_path(v)%>
-      </li>
-    </ul>
+  <% if @train.sort_flag          %>
+  <%   @train.vagons.tail.each do |v|  %>
+         <ul>
+           <li>
+            <%= link_to v.number, vagon_path(v)%>
+           </li>
+         </ul>
+  <%   end %>  
+  <% else                         %>
+  <%   @train.vagons.head.each do |v|  %>
+        <ul>
+           <li>
+            <%= link_to v.number, vagon_path(v)%>
+           </li>
+         </ul>
+  <%   end %>  
   <% end %>
+ 
+  <h2> Информация о вагонах: </h2>
+  <p> <strong> Плацкартных вагонов: </strong>
+  <%=@train.vagons.economy.size%></p>
+  Кол-во мест: верх/нижн.
+  <%=@train.vagons.economy.sum(:num_hi_places) %> / <%=@train.vagons.economy.sum(:num_low_places)%>
+  <p> <strong> Купейных вагонов: </strong>
+  <%=@train.vagons.coupe.size%> </p>
+  <p>Кол-во мест: верх/нижн.
+  <%=@train.vagons.coupe.sum(:num_hi_places)%> / <%=@train.vagons.coupe.sum(:num_low_places)%></p>
 
-    <h2> Информация о вагонах: </h2>
-    <p> <strong> Плацкартных вагонов: </strong>
-    <%=@train.vagons.economy.size%></p>
-    Кол-во мест: верх/нижн.
-    <%=@train.vagons.economy.sum(:num_hi_places) %> / <%=@train.vagons.economy.sum(:num_low_places)%>
-    <p> <strong> Купейных вагонов: </strong>
-    <%=@train.vagons.coupe.size%> </p>
-    <p>Кол-во мест: верх/нижн.
-    <%=@train.vagons.coupe.sum(:num_hi_places)%> / <%=@train.vagons.coupe.sum(:num_low_places)%></p>
+  <p> <strong> СВ вагонов: </strong>
+  <%=@train.vagons.comfort.size%> </p>
+  <p>Кол-во нижних мест: 
+  <%=@train.vagons.comfort.sum(:num_low_places)%> </p>
 
-    <p> <strong> СВ вагонов: </strong>
-    <%=@train.vagons.comfort.size%> </p>
-    <p>Кол-во нижних мест: 
-    <%=@train.vagons.comfort.sum(:num_low_places)%> </p>
-
-    <p> <strong> Сидячих вагонов: </strong>
-    <%=@train.vagons.seat.size%> </p>
-    <p>Кол-во мест: 
-    <%=@train.vagons.seat.sum(:seat_places)%> </p>
-
+  <p> <strong> Сидячих вагонов: </strong>
+  <%=@train.vagons.seat.size%> </p>
+  <p>Кол-во мест: 
+  <%=@train.vagons.seat.sum(:seat_places)%> </p>
 
 <% end %>
 

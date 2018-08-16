@@ -10,6 +10,10 @@ class Vagon < ApplicationRecord
   scope :comfort, -> { where(type: 'ComfortVagon') }
   scope :seat,    -> { where(type: 'SeatVagon') }
 
+  scope :head, -> { order(:number) } # сортировка с головы состава
+  scope :tail, -> { order(:number).reverse_order } # сортировка с хвоста состава
+
+
   before_validation :set_number
 
   def get_v_type

@@ -9,4 +9,9 @@ class Train < ApplicationRecord
     vagons << vagon unless vagons.include(vagon)
   end
 
+  def get_num_places(type_vagon, type_place)
+    self.vagons.where(type: type_vagon).sum(type_place)
+  end
+
+
 end
