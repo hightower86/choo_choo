@@ -1,7 +1,9 @@
 class Vagon < ApplicationRecord
-  belongs_to :train
-  validates :number, presence: true
-  V_TYPES = { SeatVagon: "сидячий", EconomyVagon: "плацкартный", CoupeVagon: "купе", ComfortVagon: "СВ" }
+  belongs_to :train 
+
+  validates :number, presence: true, uniqueness: { scope: :train_id }
+
+  V_TYPES = { SeatVagon: "сидячий", EconomyVagon: "плацкартный", CoupeVagon: "купейный", ComfortVagon: "СВ" }
 
   scope :economy, -> { where(type: 'EconomyVagon') }
   scope :coupe,   -> { where(type: 'CoupeVagon') }
@@ -17,7 +19,7 @@ class Vagon < ApplicationRecord
   private
 
   def set_number
-    self.number ||= train.vagons.maximum("number").to_i + 1 if train.present?
+    self.number |= train.vagons.maximum("number").to_i + 1
   end
 
 
