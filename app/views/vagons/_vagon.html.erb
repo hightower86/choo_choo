@@ -1,6 +1,7 @@
 <tr>
   <td><%= vagon.number %></td>
-  <td><%= link_to 'Показать', vagon %></td>
+  <td><%= vagon.get_v_type %></td>
+  <td><%= link_to 'Показать', vagon_path(vagon) %></td>
   <td><%= link_to 'Редактировать', edit_vagon_path(vagon) %></td>
-  <td><%= link_to 'Удалить', vagon, method: :delete, data: { confirm: 'Точно удалить?' } %></td>
+  <td><%= link_to 'Удалить', vagon_path(vagon), method: :delete, data: { confirm: 'Точно удалить?' } %></td>
 </tr>

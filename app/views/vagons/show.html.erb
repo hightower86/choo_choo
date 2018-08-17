@@ -7,9 +7,9 @@
 </p>
 
 <p>
-  <% if @vagon.v_type.present? %>
+  <% if @vagon.type.present? %>
     <strong>Тип вагона:</strong> 
-    <%= @vagon.v_type %>
+    <%= @vagon.get_v_type %>
   <% else %>
     <font color="red"> Тип вагона не выбран! </font>
   <% end %>
@@ -25,15 +25,10 @@
   <% end %>
 </p>
 
-<p>
- <strong>Верхних мест:</strong> 
- <%= @vagon.num_hi_places %>
-</p>
+<%= render @vagon.type.underscore %>
+ 
 
-<p>
- <strong>Нижних мест:</strong> 
- <%= @vagon.num_low_places %>
-</p>
+
 
 <%= link_to 'Редактировать', edit_vagon_path(@vagon) %> |
 <%= link_to 'Назад', vagons_path %>
