@@ -17,7 +17,7 @@ class Vagon < ApplicationRecord
   before_validation :set_number
 
   def get_v_type
-    v_type = V_TYPES[type.to_sym]
+    V_TYPES[type.to_sym]
   end
 
   private
