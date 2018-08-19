@@ -7,11 +7,15 @@ class RailwayStation < ApplicationRecord
   validates :title, presence: true
 
   # scope :ordered, -> { joins(:railway_stations_routes).order("railway_stations_routes.position").uniq }
-  scope :ordered, -> { select('railway_stations.*, railway_stations_routes.position').joins(:railway_stations_routes).order("railway_stations_routes.position") }
+  scope :ordered, -> { select('railway_stations.*, railway_stations_routes.position').joins(:railway_stations_routes).order("railway_stations_routes.position").uniq }
 
   def update_position(route, position)
-    rsr = railway_stations_routes.where(route: route).first
-    rsr.update(position: position) if rsr
+    station_route(route).update(position: position) if rsr
+  end
+
+
+  def position_in(route)
+    station_route(route).try(:position)
   end
 
   protected
@@ -19,4 +23,5 @@ class RailwayStation < ApplicationRecord
   def station_route(route)
     @rsr ||= railway_stations_routes.where(route: route).first
   end
+
 end
