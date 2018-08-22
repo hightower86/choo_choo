@@ -6,11 +6,11 @@ class RailwayStation < ApplicationRecord
   
   validates :title, presence: true
 
-  # scope :ordered, -> { joins(:railway_stations_routes).order("railway_stations_routes.position").uniq }
-  scope :ordered, -> { select('railway_stations.*, railway_stations_routes.position').joins(:railway_stations_routes).order("railway_stations_routes.position").uniq }
+  scope :ordered, -> { joins(:railway_stations_routes).order("railway_stations_routes.position").uniq }
 
   def update_position(route, position)
-    station_route(route).update(position: position) if rsr
+    rsr = station_route(route)
+    rsr.update(position: position) if rsr
   end
 
 

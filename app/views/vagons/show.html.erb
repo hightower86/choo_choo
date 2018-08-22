@@ -28,7 +28,5 @@
 <%= render @vagon.type.underscore %>
  
 
-
-
 <%= link_to 'Редактировать', edit_vagon_path(@vagon) %> |
-<%= link_to 'Назад', vagons_path %>
+<%= link_to 'Назад', @vagon.train %>
