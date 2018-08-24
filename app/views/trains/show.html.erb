@@ -35,15 +35,15 @@
   <%   @train.vagons.tail.each do |v|  %>
          <ul>
            <li>
-            <%= link_to v.number, vagon_path(v)%>
+            <%= link_to "Вагон № #{v.number} (#{v.get_v_type})", vagon_path(v) %>
            </li>
          </ul>
   <%   end %>  
-  <% else                         %>
+  <% else %>
   <%   @train.vagons.head.each do |v|  %>
         <ul>
            <li>
-            <%= link_to v.number, vagon_path(v)%>
+            <%= link_to "Вагон № #{v.number} (#{v.get_v_type})", vagon_path(v) %>
            </li>
          </ul>
   <%   end %>  

@@ -1,0 +1,14 @@
+<h1>Поиск билетов</h1>
+
+<%= params.inspect %>
+
+<h3>Найдены следующие поезда по выбранному маршруту: </h3>
+
+<p> <%= @start_station.title %> </p>
+<p> <%= @end_station.title %> </p>
+
+<p>
+  <%= @routes.inspect %>
+</p>
+
+<%= link_to 'На главную...', welcome_index_path %>

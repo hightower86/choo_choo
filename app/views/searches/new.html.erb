@@ -1,0 +1,24 @@
+<h1>Поиск билетов</h1>
+
+<% form_tag search_path %>
+
+<div class="field">
+  <%= form_tag("/search", method: "get") do %>
+    Станция отправления:
+    <%= select_tag :start_station, options_from_collection_for_select(@stations, :id, :title) %>
+    Станция прибытия:
+    <%= select_tag :end_station, options_from_collection_for_select(@stations, :id, :title) %> 
+    <%= submit_tag("Поиск!") %>
+  <% end %>
+</div>
+
+<%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+
+<%  %>
+
+<%= link_to 'На главную...', welcome_index_path %>
