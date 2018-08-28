@@ -2,13 +2,25 @@
 
 <%= params.inspect %>
 
-<h3>Найдены следующие поезда по выбранному маршруту: </h3>
+<h3> Заданные станции: </h3>
 
 <p> <%= @start_station.title %> </p>
 <p> <%= @end_station.title %> </p>
 
-<p>
-  <%= @routes.inspect %>
-</p>
+<h3> Принадлежат маршрутам: </h3>
+
+<ul> 
+  <% @routes.each do |r| %>
+    <li> <%= r.title %> </li>
+  <% end %>
+</ul>
+
+<h3> По которым следуют поезда: </h3>
+
+<ul> 
+  <% @trains.each do |t| %>
+    <li> <%= t.number %> </li>
+  <% end %>
+</ul>
 
 <%= link_to 'На главную...', welcome_index_path %>
