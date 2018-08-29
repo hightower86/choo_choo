@@ -3,6 +3,8 @@ class SearchesController < ApplicationController
   def show
     @end_station   = RailwayStation.find(params[:end_station])
     @start_station = RailwayStation.find(params['start_station'])
+    @start_stationt_departure = ""
+    @end_station_arrive = ""
     @routes = Search.find_routes(@start_station, @end_station)
     @trains = Search.find_trains(@routes)
   end
@@ -11,11 +13,7 @@ class SearchesController < ApplicationController
   end
 
   def create
-    # @search = Search.new(search_params)
-    # @end_station   = RailwayStation.find(params[:end_station])
-    # @start_station = RailwayStation.find(params['start_station'])
-    # @routes = Search.find_routes([@start_station, @end_station])
-    # render :show
+
   end
 
   private
