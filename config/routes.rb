@@ -8,7 +8,10 @@ Rails.application.routes.draw do
     patch :update_arrive, on: :member
   end
   resources :routes
-  resource  :search, only: [:show, :edit, :new ]
+  resource  :search, only: [:show, :edit, :new ] do
+    get :find_time, on: :member
+  end
+
 	get 'welcome/index'
 
 	root 'welcome#index'

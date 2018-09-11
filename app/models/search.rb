@@ -9,6 +9,10 @@ class Search < ApplicationRecord
     Train.where(route: routes)
   end
 
+  def self.get_departure_time(route, station)
+    RailwayStationsRoute.where(route: route, railway_station: station).first.departure.to_s(:time)
+  end
+
   def start_station
     @start_station = RailwayStation.find(params['start_station'])
   end

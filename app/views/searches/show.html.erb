@@ -19,7 +19,12 @@
 
 <ul> 
   <% @trains.each do |t| %>
-    <li> <%= t.number %> </li>
+    <li> <%= t.number %> <%= t.route.title%> 
+      <%= @start_station.departure_in(t.route) %>
+        <%=  %>
+      <%  %>   
+
+    </li>
   <% end %>
 </ul>
 
