@@ -29,17 +29,17 @@ class RailwayStation < ApplicationRecord
   end
 
   def departure_in(route)
-    station_route(route).try(:departure)
+    station_route(route).try(:departure).try(:strftime, "%H:%M")
   end
 
   def arrive_in(route)
-    station_route(route).try(:arrival)
+    station_route(route).try(:arrival).try(:strftime, "%H:%M")
   end
 
   protected
 
   def station_route(route)
-    @rsr ||= railway_stations_routes.where(route: route).first
+    @rsr = railway_stations_routes.where(route: route).first
   end
 
 end

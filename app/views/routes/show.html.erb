@@ -30,8 +30,8 @@
     <thead>
       <td width="100px"><strong>Название</strong> </td>
       <td><strong>Позиция</strong> </td>
-      <td><strong>Отправление</strong> </td>
       <td><strong>Прибытие</strong> </td>
+      <td><strong>Отправление</strong> </td>
     </thead>
     <tbody>
       <%@route.railway_stations.ordered.each do |r| %>
@@ -45,21 +45,20 @@
           <% end %>
         </td>
         <td>
-          <%= form_tag update_departure_railway_station_path(r), method: :patch do %>
-            <%= time_field_tag   :departure, r.departure_in(@route).to_s%>
-            <%= r.departure_in(@route) %>
+          <%= form_tag update_arrive_railway_station_path(r), method: :patch do %>
+            <%= time_field_tag   :arrive, r.arrive_in(@route)%>
             <%= hidden_field_tag :route_id,  @route.id %>
             <%= submit_tag 'Обновить' %>
           <% end %>
         </td>
         <td>
-          <%= form_tag update_arrive_railway_station_path(r), method: :patch do %>
-            <%= time_field_tag   :arrive, r.arrive_in(@route).to_s%>
-            <%= r.arrive_in(@route) %>
+          <%= form_tag update_departure_railway_station_path(r), method: :patch do %>
+            <%= time_field_tag   :departure, r.departure_in(@route)%>
             <%= hidden_field_tag :route_id,  @route.id %>
             <%= submit_tag 'Обновить' %>
           <% end %>
         </td>
+        
       </tr>
     <% end %>
     </tbody>  

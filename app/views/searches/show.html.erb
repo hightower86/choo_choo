@@ -1,7 +1,5 @@
 <h1>Поиск билетов</h1>
 
-<%= params.inspect %>
-
 <h3> Заданные станции: </h3>
 
 <p> <%= @start_station.title %> </p>
@@ -17,15 +15,27 @@
 
 <h3> По которым следуют поезда: </h3>
 
-<ul> 
-  <% @trains.each do |t| %>
-    <li> <%= t.number %> <%= t.route.title%> 
-      <%= @start_station.departure_in(t.route) %>
-        <%=  %>
-      <%  %>   
-
-    </li>
+<table>
+  <thead>
+    <td><strong>Поезд</strong> </td>
+    <td><strong>Маршрут</strong> </td>
+    <td><strong>Отпр. со ст. <%= @start_station.title%></strong> </td>
+    <td><strong>Приб. на ст. <%= @end_station.title%></strong> </td>
+  </thead>
+  <tbody>
+    <% @trains.each do |t| %>
+    <tr>
+      <td> <%= t.number %> </td>
+      <td> <%= t.route.title%> </td>
+      <td> <%= @start_station.departure_in(t.route) %> </td>
+      <td> <%= @end_station.arrive_in(t.route) %> </td>
+    </tr>
   <% end %>
+
+  </tbody>
+</table>
+<ul> 
+  
 </ul>
 
 <%= link_to 'На главную...', welcome_index_path %>
