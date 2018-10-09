@@ -1,0 +1,26 @@
+<%= form_for @ticket do |f| %>
+  <%= render 'common/errors', resource: ticket %>
+  
+  <%= f.hidden_field :start_station_id %> 
+  <%= f.hidden_field :end_station_id %> 
+  <%= f.hidden_field :train_id %> 
+  <%= f.hidden_field :user_id %> 
+
+  Введите информацию о пользователе: </br> </br>
+
+  <div class="form-group">
+    <%= f.label :fio, "ФИО пассажира" %>
+    <%= f.text_field :fio  %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :pass, "Паспорт пассажира" %>
+    <%= f.text_field :pass  %>
+  </div>
+
+
+  <%= f.submit 'Купить билет' %>
+
+<% end %>
+
+

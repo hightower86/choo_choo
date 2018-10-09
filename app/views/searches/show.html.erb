@@ -21,6 +21,7 @@
     <td><strong>Маршрут</strong> </td>
     <td><strong>Отпр. со ст. <%= @start_station.title%></strong> </td>
     <td><strong>Приб. на ст. <%= @end_station.title%></strong> </td>
+    <td><strong>Действие </strong> </td>
   </thead>
   <tbody>
     <% @trains.each do |t| %>
@@ -29,6 +30,12 @@
       <td> <%= t.route.title%> </td>
       <td> <%= @start_station.departure_in(t.route) %> </td>
       <td> <%= @end_station.arrive_in(t.route) %> </td>
+      <td>
+          <%= link_to 'Купить Билет', new_ticket_path(ticket: { train_id: t.id, 
+                                                        start_station_id:  @start_station, 
+                                                        end_station_id: @end_station},
+                                                        name: 'name', user_id: @user) %>
+      </td>
     </tr>
   <% end %>
 

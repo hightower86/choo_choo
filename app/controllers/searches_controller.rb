@@ -5,6 +5,7 @@ class SearchesController < ApplicationController
     @start_station = RailwayStation.find(params['start_station'])
     @routes = Search.find_routes(@start_station, @end_station)
     @trains = Search.find_trains(@routes)
+    @user = User.first
   end
 
   def new
