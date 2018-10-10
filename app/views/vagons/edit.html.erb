@@ -1,5 +1,10 @@
 <h1>Редактирование вагона</h1>
 
+<div class="field">
+    <%= form.label :train , 'Поезд:'%>
+    <%= form.collection_select :train_id, Train.all, :id, :number %>
+</div>
+
 <%= render 'form', vagon: @vagon %>
 
 <%= link_to 'Показать', vagon_path(@vagon) %>

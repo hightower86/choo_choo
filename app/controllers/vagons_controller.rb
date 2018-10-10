@@ -1,5 +1,6 @@
 class VagonsController < ApplicationController
   before_action :set_vagon, only: [:show, :edit, :update, :destroy]
+  before_action :set_train, only: [:new, :create]
 
   # GET /vagons
   def index
@@ -21,14 +22,12 @@ class VagonsController < ApplicationController
 
   # POST /vagons
   def create
-    @vagon = Vagon.new(vagon_params)
-
-    respond_to do |format|
-      if @vagon.save
-        format.html { redirect_to @vagon.becomes(Vagon), notice: 'Vagon was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    @vagon = @train.vagons.new(vagon_params)
+    
+    if @vagon.save
+      redirect_to @train
+    else
+      render :new
     end
   end
 
@@ -52,6 +51,9 @@ class VagonsController < ApplicationController
   end
 
   private
+    def set_train
+      @train = Train.find(params[:train_id])
+    end
     # Use callbacks to share common setup or consvagonts between actions.
     def set_vagon
       @vagon = Vagon.find(params[:id])

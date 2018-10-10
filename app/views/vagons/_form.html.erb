@@ -1,15 +1,10 @@
-<%= form_with(model: vagon.becomes(Vagon), local: true) do |form| %>
+<%= form_for [@train, @vagon.becomes(Vagon)] do |form| %>
   
   <%= render 'common/errors', resource: vagon %>
 
   <div class="field">
     <%= form.label :number %>
     <%= form.text_field :number, id: :vagon_number %>
-  </div>
-
-  <div class="field">
-    <%= form.label :train , 'Поезд:'%>
-    <%= form.collection_select :train_id, Train.all, :id, :number %>
   </div>
 
   <div class="field">
@@ -41,8 +36,6 @@
     <%= form.label :seat_places , 'Сидячих мест:'%>
     <%= form.number_field :seat_places %>
   </div>
-
-
 
   <div class="actions">
     <%= form.submit %>

@@ -1,20 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Список вагонов</h1>
+<h1>Список билетов</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Номер</th>
+      <th>Билет</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-      <%= render partial: "vagon", collection: @vagons, as: :vagon %>
+    <%= render @tickets %>
   </tbody>
 </table>
 
 <br>
 
+<%= link_to 'Создать билет', new_ticket_path %>
 <%= link_to 'На стартовую страницу', welcome_index_path %>

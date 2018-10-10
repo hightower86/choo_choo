@@ -35,15 +35,15 @@
   <%   @train.vagons.tail.each do |v|  %>
          <ul>
            <li>
-            <%= link_to v.number, vagon_path(v)%>
+            <%= link_to "Вагон № #{v.number} (#{v.get_v_type})", vagon_path(v) %>
            </li>
          </ul>
   <%   end %>  
-  <% else                         %>
+  <% else %>
   <%   @train.vagons.head.each do |v|  %>
         <ul>
            <li>
-            <%= link_to v.number, vagon_path(v)%>
+            <%= link_to "Вагон № #{v.number} (#{v.get_v_type})", vagon_path(v) %>
            </li>
          </ul>
   <%   end %>  
@@ -70,6 +70,7 @@
   <%=@train.vagons.seat.sum(:seat_places)%> </p>
 
 <% end %>
+<p> <%= link_to 'Добавить вагон', new_train_vagon_path(@train)%> </p>
 
 <%= link_to 'Редактировать', edit_train_path(@train) %> |
 <%= link_to 'Назад', trains_path %>
