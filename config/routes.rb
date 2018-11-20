@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :tickets
   resources :trains do
     resources :vagons, shallow: true
